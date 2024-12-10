@@ -1,3 +1,4 @@
-
 # Launchdarkly Dev Server With Docker Compose
-`docker compose run -e LD_ACCESS_TOKEN=replace-me ld-dev-server`
+
+## Running the Code
+`LD_ACCESS_TOKEN=replace-me docker compose up`
