@@ -33,6 +33,8 @@ func main() {
 	fmt.Printf("Flag Key [%s] result: [%v]", flagKey, result)
 }
 
+// makeLdClient returns a LDClient
+// if LD_BASE_URI is set for the local dev server, then we configure the client to use the local dev server
 func makeLdClient() (*ldclient.LDClient, error) {
 	sdkKey := os.Getenv("LD_SDK_KEY")
 	if sdkKey == "" {
