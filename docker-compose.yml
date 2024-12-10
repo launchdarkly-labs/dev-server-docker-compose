@@ -20,6 +20,10 @@ services:
   app:
     build:
       context: ./app
+    environment:
+      - LD_SDK_KEY=$LD_SOURCE_PROJECT
+      - APP_FLAG_KEY=$APP_FLAG_KEY
+      - LD_BASE_URI=http://ld-dev-server:8765
     depends_on:
       ld-dev-server:
         condition: service_healthy
