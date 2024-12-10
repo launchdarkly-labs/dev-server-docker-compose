@@ -12,6 +12,7 @@ import (
 
 func main() {
 
+	// client could connect to dev-server or LaunchDarkly
 	client, err := makeLdClient()
 
 	if err != nil {
@@ -19,7 +20,11 @@ func main() {
 		os.Exit(1)
 	}
 
+	// specify the flag key via an environment variable
 	flagKey := os.Getenv("APP_FLAG_KEY")
+
+	// Build context for flag evaluation
+	// NOTE: The dev-server does not serve targeting rules
 	context := ldcontext.NewBuilder("context-key-123abc").
 		Name("Sandy").
 		Build()
