@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  ld-dev-server:
+    image: launchdarkly/ldcli:1.9.0
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -q -O /dev/null http://localhost:8765/ui/" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "8765:8765"
+    entrypoint: sh
+    command:
+      - -ec
+      - |
+        /ldcli dev-server start --source $LD_SOURCE_ENV --project $LD_SOURCE_PROJECT --context '$LD_CONTEXT' --override '$LD_LOCAL_OVERRIDES'
+    environment:
+      - LD_ACCESS_TOKEN=$LD_ACCESS_TOKEN
