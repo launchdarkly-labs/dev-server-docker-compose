@@ -17,6 +17,8 @@ services:
         /ldcli dev-server start --source $LD_SOURCE_ENV --project $LD_SOURCE_PROJECT --context '$LD_CONTEXT' --override '$LD_LOCAL_OVERRIDES'
     environment:
       - LD_ACCESS_TOKEN=$LD_ACCESS_TOKEN
+    volumes:
+      - dev_server:/root/.local/state/ldcli
   app:
     build:
       context: ./app
@@ -27,3 +29,5 @@ services:
     depends_on:
       ld-dev-server:
         condition: service_healthy
+volumes:
+  dev_server:

@@ -13,7 +13,9 @@ This repo is a demo of how to use dev-server start and sync with [docker-compose
 1. Configure [ldcli container](docker-compose.yml)
 2. Customize [variables for dev-server sync](.env)
 3. [configure LDClient](app/main.go) to accept the dev-server uri
-2. Specify [which flag to evaluate for the demo app](.env)
+4. Specify [which flag to evaluate for the demo app](.env)
+5. Configures a docker volume to perist dev server state across restarts [docker-compose.yml](docker-compose.yml)
+6. The local overrides will be applied every time that dev-server starts `LD_LOCAL_OVERRIDES` in .env
 
 ## Running the Code
 
